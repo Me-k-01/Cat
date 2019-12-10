@@ -1,0 +1,17 @@
+{
+  "name": "cat",
+  "version": "1.0.0",
+  "description": "A web-chat application",
+  "main": "script.js",
+  "scripts": {
+    "dev": "nodemon ./Server/server.js"
+  },
+  "author": "Me-k",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
