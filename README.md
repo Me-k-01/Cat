@@ -1,6 +1,9 @@
 # Cat
 
-To start the server:
-npm run dev
+To start the client sided app:
 
-(nodemon server.js)
+https://raw.githack.com/Me-k-01/Cat/master/index.html
+
+To start the server in a console:
+
+npm run dev
