@@ -1,5 +1,4 @@
 To start the server:
-npm run devStart
+npm run dev
 
 (nodemon server.js)
-
