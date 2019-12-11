@@ -3,16 +3,24 @@ const io = require("socket.io")(3000)  // Ouverture du server sur le port 3000
 var users = {}
 
 io.on("connection", socket => {  // Lorsqu'une connection au socket est fait
-  socket.on("new-user", (name = "noob") => {  // Si c'est un nouvelle utilisateur
-    if (! name) { name = "Lama";}
-    users[socket.id] = name ;  // Ajout du nom dans l'objets stockant les utilisateurs.
-    const userName = `${users[socket.id]}#${socket.id}`
+  socket.on("new-user", ( name = "Lama-Faché" ) => {  // Si c'est un nouvelle utilisateur
 
-    console.log(`${userName} as joined.`);
+    users[socket.id] = name ;  // Ajout du nom dans l'objets stockant les utilisateurs.
+
+    console.log(`${name} as joined.`);
     socket.broadcast.emit("server", `${name} a rejoint le salon.`);
     socket.emit("server", "Bienvenue!");
   });
 
+  socket.on("change-name", ( name = "Lama-Faché" ) => {  // Si c'est un nouvelle utilisateur
+
+    users[socket.id] = name ;  // Changement du nom dans l'objets stockant les utilisateurs.
+
+    console.log(`${users[socket.id]} as became: ${name}`);
+    socket.broadcast.emit("server", `${users[socket.id]} est devenu ${name}.`);
+
+    socket.emit("server", `Vous etes devenu ${name}`);
+  });
 
   socket.on("new-message", data => {
     if (data["user"] && data["txt"] != "") {
