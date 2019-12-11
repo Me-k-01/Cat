@@ -1,38 +1,51 @@
-const socket = io("http://localhost:3000")
-
-// conteneur des message envoyé par l'utilisateur
-const msgForm = document.getElementById("send-container")
-// conteneur des messages recus
-const msgCont = document.getElementById("message-container")
-// Les entré utilisateur.
-const msgInput = document.getElementById("message-input")
 
 // Nom du client.
-const userName = prompt("Votre pseudonyme:")
-const userId = Math.trunc(Math.random() * 1000)
-const user = userName + " #" + userId.toString(16).toUpperCase()
+const name = prompt("Votre pseudonyme:")
+while ( ! name ) { name = prompt( "Votre pseudonyme:" ) }
 
-function addMessage(msg) {
-  /* Fonction pour ajouter un nouveau messae a la page web. */
+
+const socket = io("http://localhost:3000")
+
+// conteneur des messages envoyé par l'utilisateur
+const msgForm = document.getElementById("input-container")
+// conteneur des messages
+const msgCont = document.getElementById("message-container")
+// Message du serveur.
+const servCont = document.getElementById("server")
+
+// Les entré utilisateur.
+const msgInput = document.getElementById("input")
+
+socket.emit("new-user", name)
+
+
+function addMessage(msg, color = "#DDDDDD") {
+  /* Fonction pour creer un nouvelle element contenant un message */
   const newContainer = document.createElement('div') // creation d'un element html
+  newContainer.style.color = color;
   newContainer.innerText = msg  // ajout du message dans l'element.
-  msgCont.append(newContainer)  // ajout de l'element a la page.
+  return newContainer;  // ajout de l'element a la page.
 }
 
-socket.on("chat-message", txt => {
+socket.on("server", txt => {
+  servCont.append(addMessage(txt))
+})
+socket.on("chat-message", txt =>  {
+  msgCont.append(addMessage(txt));
+})
 
-
-  console.log(txt);
-  addMessage(txt);
+socket.on("your-message", txt => {
+  msgCont.append(addMessage(txt, "#34eefa"));
 })
 
 msgForm.addEventListener("submit", e =>  {
-  // Arrette le raffrechissement de la page lors des envoies de texte.
+  // Arrette le raffraichissement de la page lors des envoies de texte.
   e.preventDefault()
+
   const msg = msgInput.value  // contenue de la zone de saisie
   // Envoie le message du client jusqu'au serveur.
-  socket.emit("new-message", // Creer l'event "new-message"
-    {user: user, txt: msg})
+  socket.emit("new-message", // Creer l'event "new-message" et l'envoie au serveur
+    {user: name, txt: msg})
   // Puis on vide le contenu de la zone de saisie.
   msgInput.value = "";
 })
