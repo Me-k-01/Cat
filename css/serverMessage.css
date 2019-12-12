@@ -1,0 +1,19 @@
+#server div {
+  padding: 2px;
+  width: 50%;
+  max-width: 1200px;
+  border-radius: 3px;
+  opacity: 1;
+  background-color: #cd7e21;
+
+  transition-duration: 3s;
+  transition-timing-function:  ease-in;
+}
+#server:active div{
+
+  opacity: 0;
+
+}
+#server div:nth-child(2n) {
+  background-color: #bd6e12;
+}

@@ -6,7 +6,6 @@ const msgForm = document.getElementById("input-container");
 const msgCont = document.getElementById("message-container");
 // Message du serveur.
 const servCont = document.getElementById("server");
-
 // Les entré utilisateur.
 const msgInput = document.getElementById("input");
 
