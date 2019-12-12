@@ -7,52 +7,8 @@
   <title>Chat App</title>
   <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
   <script defer src="script.js"></script>
-  <style media="screen">
-    body {
-      background-color: #212125;
-    }
-  </style>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: left;
-    }
-    #message-container {
-      width: 50%;
-      max-width: 1200px;
-
-    }
-    #message-container div {
-      background-color: #212125;
-      padding: 5px;
-    }
-    #server div {
-      width: 50%;
-      max-width: 1200px;
-      background-color: #cd7e21;
-    }
-    #server div:nth-child(2n) {
-      background-color: #bd6e12;
-    }
-    #message-container div:nth-child(2n) {
-      background-color: #25252a;
-    }
-    #input-container {
-      position: fixed;
-      padding-bottom: 30px;
-      bottom: 0;
-      background-color: #1d1d20;
-      max-width: 1200px;
-      width: 50%;
-      display: flex;
-    }
-    #input {
-      flex-grow: 1;
-      background-color: #DDDDDD;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="button.css" />
 </head>
 <body>
   <div id="message-container"></div>

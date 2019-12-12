@@ -11,16 +11,8 @@ const servCont = document.getElementById("server");
 const msgInput = document.getElementById("input");
 
 // Nom du client.
-const name = createName();
-socket.emit("new-user", name);  // On envoie le nom au serveur.
-
-
-function createName()  {
-  const name = prompt("Votre pseudonyme:");
-  if ( ! name ) { name = Math.random() }
-  return name;
-}
-
+var name = prompt("Votre pseudonyme:");
+socket.emit("name", name);  // On envoie le nom au serveur.
 
 
 
@@ -42,7 +34,7 @@ socket.on("chat-message", txt =>  {
 })
 
 socket.on("your-message", txt => {
-  msgCont.append(addMessage(txt, "#34eefa"));
+  msgCont.append(addMessage(txt, "#26c5d0"));
 })
 
 msgForm.addEventListener("submit", e =>  {
@@ -51,8 +43,8 @@ msgForm.addEventListener("submit", e =>  {
 
   const msg = msgInput.value;  // contenue de la zone de saisie
   // Envoie le message du client jusqu'au serveur.
-  socket.emit("new-message", // Creer l'event "new-message" et l'envoie au serveur
-    {user: name, txt: msg});
+  socket.emit("new-message", msg.trim()); // Creer l'event "new-message" et l'envoie au serveur
+
   // Puis on vide le contenu de la zone de saisie.
   msgInput.value = "";
 })

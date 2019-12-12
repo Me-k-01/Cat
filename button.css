@@ -1,0 +1,20 @@
+button {
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+  background-color: #26c5d0;
+  color: #25252a;
+  cursor: pointer;
+  border: none;
+  outline: none
+  font-family: arial;
+  font-size: 2em;
+  padding: 10px;
+  transition: 0.1s;
+
+}
+button:hover {
+  transform: scale(1.01)
+}
+button:active {
+  transform: scale(0.98)
+}

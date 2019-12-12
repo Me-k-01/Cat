@@ -1,0 +1,13 @@
+{
+  "nam": [ "Renard", "Ours", "Lapin", "Phoenix", "Flamby",
+    "Dragon", "Loup", "Hibou", "Reptile", "Carpe",
+    "Baleine", "Humain", "Puit", "Salamandre", "Esturgeon",
+    "Poubelle", "Etudiant", "Vampire", "Oiseau" ],
+
+  "adj": [ "malin", "polaire", "brun", "d'argent", "d'or",
+    "d'arce-en-ciel", "de-lumière", "solitaire", "bleu", "malade",
+    "électrique", "experimentaté", "étourdi", "solaire", "de-combat",
+    "irrécuperable", "maladroit", "actif", "inhumain", "pas-content",
+    "mental", "gothique", "extenué", "intelligent", "fetard",
+    "immaginaire", "loustic"]
+}
